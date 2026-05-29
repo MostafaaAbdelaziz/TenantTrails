@@ -13,7 +13,7 @@ function SignInPage() {
 
   function handleDashboard(e) {
     e.preventDefault();
-    login(email);
+    signIn(email);
     navigate("/dashboard");
   }
 
@@ -58,13 +58,8 @@ function SignInPage() {
             Create one
           </span>
         </p>
-        <div className= "auth-demo">
         <h3 className="demo-title">Demo: alex@dal.ca / password123</h3>
       </div>
-
-      </div>
-
-      
     </div>
   );
 }

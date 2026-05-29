@@ -12,11 +12,15 @@ function signIn(email){
     setUser({ email });
 }
 
+function signUp(name, email, password) {
+    setUser({ name, email });
+}
+
 function logout() { 
     setUser(null); 
 }
 return (
-    <AuthContext.Provider value={{ user, signIn, logout }}>
+    <AuthContext.Provider value={{ user, signIn, signUp, logout }}>
         {children}
     </AuthContext.Provider>
     );

@@ -155,7 +155,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f1f5f9;
+  background: #efeff8;
 }
 
 /* ===== CARD ===== */
@@ -170,7 +170,7 @@ body {
 
 .auth-title {
   margin-bottom: 5px;
-  color: #2563eb;
+  color: #3116A7;
   font-size: 24px;
 }
 
@@ -203,7 +203,7 @@ body {
   width: 100%;
   margin-top: 18px;
   padding: 10px;
-  background: #2563eb;
+  background: #3116A7;
   color: white;
   border: none;
   border-radius: 10px;
@@ -224,7 +224,7 @@ body {
 }
 
 .auth-link {
-  color: #2563eb;
+  color: #3116A7;
   cursor: pointer;
   font-weight: 500;
 }
@@ -233,11 +233,11 @@ body {
   text-decoration: underline;
 }
 
-.auth-demo {
+.demo-title {
   margin-top: 20px;
   padding: 15px;
   background: #e0e7ff;
   border-radius: 10px;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: bold;
 }
