@@ -6,12 +6,10 @@ function ProtectedRoute({ children }) {
 
     const { user } = useAuth();
 
-
     if (!user) {
         return <Navigate to="/signin"/>;
     }
 
     return children;
-
 }
 export default ProtectedRoute;
