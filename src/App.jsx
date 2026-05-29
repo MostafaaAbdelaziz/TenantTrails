@@ -1,54 +1,31 @@
 import "./index.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+
+
+import HomePage from "./pages/HomePage";
+import Dashboard from "./pages/Dashboard";
+import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage";
 
 function App() {
-  return (
-    <div className="app">
-      <nav className="header">
-        <div className="logo">TenantTrails</div>
-        <div className="header-buttons">
-          <button className="signin-btn">Sign in</button>
-          <button className="create-account-btn">Get Started</button>
-        </div>
-      </nav>
-
-      <section className="middle-section">
-        <div className="launching-text">
-          Launching in Halifax, Nova Scotia
-        </div>
-        <h1>
-          Know what <br />
-          you’re signing <br />
-          before you <br />
-          sign it.
-        </h1>
-        <p> Read honest reviews from past tenants. See AI-generated summaries. Make informed decisions about where you live</p>
-        <div className="middle-section-buttons">
-          <button className="create-account-btn large">Create Free Account</button>
-          <button className="signin-btn large">Sign In</button>
-        </div>
-      </section>
-
-      <section className="features">
-        <div className="feature-card">
-          <div className="feature-icon">⭐</div>
-          <h3>Verified Reviews</h3>
-          <p>
-            Real ratings with photos and videos from past tenants
-          </p>
-        </div>
-        <div className="feature-card">
-          <div className="feature-icon">🤖</div>
-          <h3>AI Summaries</h3>
-          <p>Key issues and sentiment extracted from every review.</p>
-        </div>
-        <div className="feature-card">
-          <div className="feature-icon">💬</div>
-          <h3>Ask Questions</h3>
-          <p>Comment on reviews and get answers from past tenants</p>
-        </div>
-      </section>
-    </div>
+return (
+  <AuthProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
+      </Routes>
+    </BrowserRouter>
+  </AuthProvider>
   );
 }
-
 export default App;
