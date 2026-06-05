@@ -84,7 +84,7 @@ function Profile() {
             </div>
 
             <div className="profile-stat">
-              <span className="profile-stat-number">3</span>
+              <span className="profile-stat-number">0</span>
               <span className="profile-stat-label">Comments</span>
             </div>
           </div>
