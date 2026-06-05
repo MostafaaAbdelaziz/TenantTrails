@@ -1,31 +1,39 @@
-import React from "react";
+import { useState, React } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { apartments } from "../data/mockdata";
-import { reviews } from "../data/mockdata";
+import { apartments, reviews } from "../data/mockdata";
 import StarRating from "../components/StarRating";
-import "../index.css";
 import NavBar from "../components/NavBar";
 import RatingBreakdown from "../components/RatingBreakdown";
+import ReviewDialog from "../components/ReviewDialog";
+import "../index.css";
+
 
 function ApartmentDetail() {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  //Review dialog state and handler to pop up the review form when "Write a Review" is clicked
+  const [showReviewDialog, setShowReviewDialog] = useState(false);
+
+  function handleReviewSubmit(newReview) {
+    console.log("submitted review:", newReview);
+  }
+
+  //Find the apartment based on the ID in the URL params
   const apartment = apartments.find((apt) => apt.id === Number(id));
 
+  //using the apartment ID, filter the reviews to only those that belong to this apartment
   const apartmentReviews = reviews.filter(
     (review) => review.apartmentId === apartment.id
   );
 
+  //helper function to split the reviewers first name and last name and return their initials for the avatar circle in the review list
   const getInitials = (name) =>
     name
       .split(" ")
       .map((part) => part[0])
       .join("")
       .toUpperCase();
-
-      
-  const filledStars = Math.round(apartment.rating);
 
   return (
     <div className="detail-page">
@@ -79,12 +87,17 @@ function ApartmentDetail() {
               </div>
             </div>
 
-                <section className="detail-grid">
+        <section className="detail-grid">
           <div className="detail-main">
             <div className="reviews-card">
               <div className="reviews-header">
                 <h3>Reviews ({apartmentReviews.length})</h3>
-                <button className="write-review-outline">+ Write a Review</button>
+                <button
+                  className="write-review-outline"
+                  onClick={() => setShowReviewDialog(true)}
+                >
+                  + Write a Review
+                </button>               
               </div>
 
               {apartmentReviews.length > 0 ? (
@@ -136,12 +149,26 @@ function ApartmentDetail() {
                 <h3>Rating Breakdown</h3>
                 <RatingBreakdown apartmentId={apartment.id} />
             </div>
-            <button className="write-review-btn">Write a Review</button>
+            <button
+              className="write-review-btn"
+              onClick={() => setShowReviewDialog(true)}
+            >
+              Write a Review
+            </button>
+
           </aside>
         </section>
       </main>
+
+      {showReviewDialog && (
+        <ReviewDialog
+          apartmentId={apartment.id}
+          onClose={() => setShowReviewDialog(false)}
+          onSubmit={handleReviewSubmit}
+        />
+      )}
+
     </div>
   );
 }
-
 export default ApartmentDetail;
