@@ -298,7 +298,7 @@ body {
   height: 32px;
   border-radius: 50%;
   background: #e8f0ff;
-  color: #2f5bea;
+  color: var(--blue);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -871,3 +871,127 @@ body {
   background: #eef2ff;
   color: #3116a7;
 }
+
+/* profile page */
+
+.profile-page { min-height: 100vh; background: #f6f8fc; }
+
+.profile-shell { max-width: 1180px; margin: 0 auto; padding: 28px 24px 48px; }
+
+.profile-summary-card,
+.profile-review-card {
+  background: #fff;
+  border: 1px solid #e6ebf2;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-summary-card {
+  border-radius: 16px;
+  padding: 26px 20px;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.profile-summary-left,
+.profile-summary-stats,
+.profile-review-actions {
+  display: flex;
+  align-items: center;
+}
+
+.profile-summary-left { gap: 16px; }
+.profile-summary-stats { gap: 32px; }
+
+.profile-summary-avatar {
+  width: 48px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #e8f0ff;
+  color: var(--blue);
+  display: grid;
+  place-items: center;
+  font: 800 1.45rem/1 sans-serif;
+}
+
+.profile-summary-name,
+.profile-reviews-title,
+.profile-review-apartment {
+  color: #1f2937;
+}
+
+.profile-summary-name { margin: 0 0 4px; font-size: 2rem; }
+.profile-summary-email,
+.profile-review-text,
+.profile-action.view { color: #667085; }
+
+.profile-summary-email,
+.profile-review-text { margin: 0; font-size: 14px; }
+
+.profile-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-stat-number {
+  color: var(--blue);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.profile-stat-label {
+  margin-top: 4px;
+  color: #98a2b3;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.profile-reviews-title { margin: 0 0 14px; font-size: 1.5rem; }
+
+.profile-reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-review-card {
+  border-radius: 14px;
+  padding: 16px 14px;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.profile-review-content { flex: 1; }
+
+.profile-review-apartment { margin: 0 0 6px; font-size: 1.15rem; }
+.profile-review-stars { margin-bottom: 8px; }
+
+.profile-review-text {
+  line-height: 1.6;
+  max-width: 72ch;
+}
+
+.profile-review-actions {
+  gap: 10px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.profile-action {
+  border: 0;
+  background: transparent;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.profile-action.edit { background: #eef4ff; color: #2f6fed; }
+.profile-action.delete { background: #fff1f2; color: #f87171; }

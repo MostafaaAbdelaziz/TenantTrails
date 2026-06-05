@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import ApartmentDetail from "./pages/ApartmentDetail";
+import Profile from "./pages/Profile";
 
 function App() {
 return (
@@ -28,6 +29,13 @@ return (
             <ApartmentDetail />
           </ProtectedRoute>
         } />
+
+        <Route path="/profile" element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        } />
+
       </Routes>
     </BrowserRouter>
   </AuthProvider>

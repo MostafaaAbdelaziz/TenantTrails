@@ -86,10 +86,42 @@ export const reviews = [
   {
     id: 1,
     apartmentId: 1,
-    user: "Alice Smith",
+    user: "Alex M",
     rating: 5,
     date: "2026-01-15",
     text: "I love living at The Marlstone! The location is perfect and the management is very responsive. Highly recommend!"
+  },
+  {
+    id: 1,
+    apartmentId: 2,
+    user: "Alex M",
+    rating: 4,
+    date: "2026-01-15",
+    text: "Park Victoria is a nice place to live. The amenities are great and it's close to everything. It's a bit pricey, but worth it for the quality."
+  },
+  {
+    id: 1,
+    apartmentId: 3,
+    user: "Alex M",
+    rating: 3,
+    date: "2026-01-15",
+    text: "Le Marchant Towers has a great location, but the building is a bit old and parking can be a hassle. It's an okay place to live if you don't mind those issues."
+  },
+  {
+    id: 1,
+    apartmentId: 4,
+    user: "Alex M",
+    rating: 3,
+    date: "2026-01-15",
+    text: "Fenwick Tower has amazing views and great amenities, but the elevator can be unreliable and I've had some security concerns. It's a mixed experience."
+  },
+  {
+    id: 1,
+    apartmentId: 5,
+    user: "Alex M",
+    rating: 2,
+    date: "2026-01-15",
+    text: "Southpoint Apartments is an affordable option, but the building is old and maintenance can be slow. It's not the best place to live, but it works if you're on a tight budget."
   },
   {
     id: 2,

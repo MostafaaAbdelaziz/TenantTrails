@@ -1,7 +1,16 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
 function NavBar() {
 
+const navigate = useNavigate();
+
 function handleSignOut() {
-  navigate("/signin");
+     navigate("/signin");
+}
+
+function handleProfile(){
+    navigate("/profile");
 }
 
 return (
@@ -18,8 +27,13 @@ return (
         </div>
 
         <div className="dashboard-profile">
-          <div className="profile-avatar">AM</div>
-          <span className="profile-name">Alex</span>
+          <button className="profile-avatar" onClick={handleProfile}>
+            AM
+          </button>
+          <span className="profile-name" onClick={handleProfile}>
+            Alex
+          </span>
+
           <button className="profile-signout" onClick={handleSignOut}>
             Sign out
           </button>

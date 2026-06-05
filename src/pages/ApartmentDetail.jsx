@@ -7,7 +7,6 @@ import RatingBreakdown from "../components/RatingBreakdown";
 import ReviewDialog from "../components/ReviewDialog";
 import "../index.css";
 
-
 function ApartmentDetail() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -15,17 +14,18 @@ function ApartmentDetail() {
   //Review dialog state and handler to pop up the review form when "Write a Review" is clicked
   const [showReviewDialog, setShowReviewDialog] = useState(false);
 
-  function handleReviewSubmit(newReview) {
-    console.log("submitted review:", newReview);
-  }
-
   //Find the apartment based on the ID in the URL params
   const apartment = apartments.find((apt) => apt.id === Number(id));
 
   //using the apartment ID, filter the reviews to only those that belong to this apartment
   const apartmentReviews = reviews.filter(
-    (review) => review.apartmentId === apartment.id
+    (review) => review.apartmentId === apartment.id,
   );
+
+  //handler function to test the review dialog form submission - currently just logs the new review to the console, but in a real app this would involve updating state and making an API call to save the review
+  function handleReviewSubmit(newReview) {
+    console.log("submitted review:", newReview);
+  }
 
   //helper function to split the reviewers first name and last name and return their initials for the avatar circle in the review list
   const getInitials = (name) =>
@@ -37,7 +37,7 @@ function ApartmentDetail() {
 
   return (
     <div className="detail-page">
-        <NavBar />
+      <NavBar />
       <main className="detail-shell">
         <button className="back-link" onClick={() => navigate("/dashboard")}>
           ← Back to all apartments
@@ -87,48 +87,50 @@ function ApartmentDetail() {
               </div>
             </div>
 
-        <section className="detail-grid">
-          <div className="detail-main">
-            <div className="reviews-card">
-              <div className="reviews-header">
-                <h3>Reviews ({apartmentReviews.length})</h3>
-                <button
-                  className="write-review-outline"
-                  onClick={() => setShowReviewDialog(true)}
-                >
-                  + Write a Review
-                </button>               
-              </div>
-
-              {apartmentReviews.length > 0 ? (
-                apartmentReviews.map((review) => (
-                  <div className="review-item" key={review.id}>
-                    <div className="review-top">
-                      <div className="review-user">
-                        <div className="review-avatar">
-                          {getInitials(review.user)}
-                        </div>
-
-                        <div>
-                          <p className="review-name">{review.user}</p>
-                          <p className="review-date">{review.date}</p>
-                        </div>
-                      </div>
-
-                      <div className="review-stars">
-                        <StarRating rating={review.rating} />                      
-                        </div>
-                    </div>
-                    <p className="review-text">{review.text}</p>
+            <section className="detail-grid">
+              <div className="detail-main">
+                <div className="reviews-card">
+                  <div className="reviews-header">
+                    <h3>Reviews ({apartmentReviews.length})</h3>
+                    <button
+                      className="write-review-outline"
+                      onClick={() => setShowReviewDialog(true)}
+                    >
+                      + Write a Review
+                    </button>
                   </div>
-                ))
-              ) : (
-                <p className="no-reviews">No reviews yet for this apartment.</p>
-              )}
-            </div>
+
+                  {apartmentReviews.length > 0 ? (
+                    apartmentReviews.map((review) => (
+                      <div className="review-item" key={review.id}>
+                        <div className="review-top">
+                          <div className="review-user">
+                            <div className="review-avatar">
+                              {getInitials(review.user)}
+                            </div>
+
+                            <div>
+                              <p className="review-name">{review.user}</p>
+                              <p className="review-date">{review.date}</p>
+                            </div>
+                          </div>
+
+                          <div className="review-stars">
+                            <StarRating rating={review.rating} />
+                          </div>
+                        </div>
+                        <p className="review-text">{review.text}</p>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="no-reviews">
+                      No reviews yet for this apartment.
+                    </p>
+                  )}
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
-        </div>
           <aside className="detail-sidebar">
             <div className="sidebar-card">
               <h3>Property Info: </h3>
@@ -146,8 +148,8 @@ function ApartmentDetail() {
               </div>
             </div>
             <div className="sidebar-card">
-                <h3>Rating Breakdown</h3>
-                <RatingBreakdown apartmentId={apartment.id} />
+              <h3>Rating Breakdown</h3>
+              <RatingBreakdown apartmentId={apartment.id} />
             </div>
             <button
               className="write-review-btn"
@@ -155,7 +157,6 @@ function ApartmentDetail() {
             >
               Write a Review
             </button>
-
           </aside>
         </section>
       </main>
@@ -167,7 +168,6 @@ function ApartmentDetail() {
           onSubmit={handleReviewSubmit}
         />
       )}
-
     </div>
   );
 }
