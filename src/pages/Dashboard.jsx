@@ -1,6 +1,8 @@
 import React from "react";
 import { apartments } from "../data/mockdata";
 import { useNavigate } from "react-router-dom";
+import StarRating from "../components/StarRating";
+import NavBar from "../components/NavBar";
 import "../index.css";
 
 
@@ -8,32 +10,9 @@ function Dashboard() {
 
   const navigate = useNavigate();
 
-  function handleSignOut() {
-  navigate("/signin");
-}
-
   return (
     <div className="dashboard-page">
-      <header className="dashboard-header">
-        <div className="dashboard-left">
-          <div className="dashboard-brand">TenantTrails</div>
-
-          <div className="dashboard-searchbar">
-            <input
-              type="text"
-              placeholder="🔍 Search apartments by address or neighbourhood..."
-            />
-          </div>
-        </div>
-
-        <div className="dashboard-profile">
-          <div className="profile-avatar">AM</div>
-          <span className="profile-name">Alex</span>
-          <button className="profile-signout" onClick={handleSignOut}>
-            Sign out
-          </button>
-        </div>
-      </header>
+      <NavBar />
 
       <main className="dashboard-main">
         <section className="dashboard-intro">
@@ -84,7 +63,7 @@ function Dashboard() {
 
                 <div className="apartment-footer">
                   <span>{apartment.reviewCount} reviews</span>
-                  <span className="footer-stars">★★★★★</span>
+                  <StarRating rating={apartment.rating} />
                 </div>
               </div>
             </div>
