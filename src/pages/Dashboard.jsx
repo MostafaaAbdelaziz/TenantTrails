@@ -54,7 +54,7 @@ function Dashboard() {
 
         <section className="apartments-grid">
           {apartments.map((apartment) => (
-            <div className="apartment-card" key={apartment.id}>
+            <div className="apartment-card" key={apartment.id} onClick={() => navigate(`/apartment/${apartment.id}`)}>
               <div className="apartment-image-wrap">
                 <img
                   src={apartment.image}

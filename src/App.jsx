@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import ApartmentDetail from "./pages/ApartmentDetail";
 
 function App() {
 return (
@@ -19,6 +20,12 @@ return (
         <Route path="/dashboard" element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/apartment/:id" element={
+          <ProtectedRoute>
+            <ApartmentDetail />
           </ProtectedRoute>
         } />
       </Routes>
